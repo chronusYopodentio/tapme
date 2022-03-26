@@ -7,7 +7,7 @@ let zero = {
 		let button1 = new button.button({
 			content: "hmm... sure",
 			onClick: function(){
-				dialogue1.remove();
+				movement.disappear(dialogue1);
 				zero.block2();
 			}
 		});
@@ -28,18 +28,42 @@ let zero = {
 			content: "kay, fair enough"
 		});
 		let button2 = new button.button({
-			content: "fuck you I have homework"
+			content: "fuck you I have homework",
+			onClick: function(){
+				movement.disappear(dialogue1);
+				zero.block3();
+			}
 		});
 		let dialogue1 = new dialogue.dialogue({
 			title: "Objective",
 			content:
 			`
-			Congrats! You're offcially an detective. Now your job is simple: come up with the name of the culprit.<br>
-			Once you nail down who is it, type their name in the <b>prosecute</b> box (cap first letter!).<br>
+			Congrats! You're offcially an detective.<br>
+			Now your job is simple: come up with the name of the culprit.<br>
+			Once you nail down who is it, <br>
+			type their name in the <b>prosecute</b> box <br>
+			(cap first letter!).<br>
 			Typing in "suicide" if it wasn't a homicide.<br>
 			<i>You have three attempts.</i>
-			`
+			`,
+			buttons: [button1, button2]
 		});
 		dialogue1.appendTo(zero.PARENT_DIV);
-	}
+
+		dialogue1.hide();
+		movement.appear(dialogue1);
+	},
+
+		block3: function(){
+			let dialogue1 = new dialogue.dialogue({
+				title: "!?",
+				content:
+				`
+				Well fuck you too, I have homework too but ya don't hear me complainin' 'bout codin' dis shit.
+				`,
+			});
+			dialogue1.appendTo(zero.PARENT_DIV);
+			dialogue1.hide();
+			movement.appear(dialogue1);
+		}
 }

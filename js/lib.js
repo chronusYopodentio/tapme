@@ -1,35 +1,43 @@
-function createDiv(id, divClass, parentDiv){
-	var el = $("<div>").attr("id", id);
-	el.addClass(divClass);
-	el.appendTo(parentDiv);
-	return el;
-}
-
-function createButton(msg){
-	var button = $("<button>").addClass("button");
-	$("<b>"+msg+"</b>").appendTo(button);
-	return button;
-}
-
-function Div(id, divClass){
-
-	// id and divClass is mandatory, the other two are optionals
-	this.id = id;
-	this.divClass = divClass;
-	this.content = {
-		id: null,
-		divClass: null,
-		add: function(div){
-			this.id = div.id,
-			this.divClass = div.divClass
+//lib.js
+let movement = {
+	ANIMATION_TIME: 400,
+	exception: {
+		not_object: "User exception: argument not object"
+	},
+	disappear: function(object){
+		//check if object is actually object
+		if (typeof object != 'object'){
+			throw movement.exception.not_object;
 		}
-	};
-	
-	// create function will append this div to a parent DOM object 
-	this.create = function(parentDOM){
-		var el = $("<div>").attr("id", this.id);
-		el.addClass(this.divClass);
+		
+		object.animate(
+			{
+				opacity: 0
+			},
+			{
+				duration: movement.ANIMATION_TIME,
+				complete: function(){
+					object.remove();
+				}
+			}
+		);
+	},
 
-		el.appendTo(parentDOM);
+	appear: function(object){
+		//check object argument
+		if (typeof object != 'object'){
+			throw movement.exception.not_object;
+		}
+
+		//pre-animation
+		object.css({
+			opacity: "0"
+		});
+
+		//animation
+		object.show().animate({
+			opacity: "1"
+		}, movement.ANIMATION_TIME);
+
 	}
 }
