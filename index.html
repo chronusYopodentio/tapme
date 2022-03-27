@@ -2,14 +2,18 @@
 <html>
 	<head>
 		<title> Tap Me!</title>
+		<meta charset='UTF-8'/>
 		<link rel="shortcut icon" href="favicon.png"/>
 		<link rel="stylesheet" type="text/css" href=css/stylesheet.css />
 		<script src=lib/jquery-3.6.0.min.js></script>
 		<script src=js/dialogue.js></script>
 		<script src=js/button.js></script>
 		<script src=js/lib.js></script>
+		<script src=js/plot.js></script>
+		<script src=js/evidence.js></script>
+		<script src=js/inventory.js></script>
 		<script src=js/level.js></script>
-		<script src=js/playground.js></script>
+		<script src="js/dev-tool.js"></script>
 		<script src=js/main.js></script>
 
 	</head>
@@ -18,6 +22,10 @@
 		<div id=wrapper>
 			<div id=content></div>
 			<div id=inventory></div>
+		</div>
+		<div id=dev-tool>
+			<input id=dev-input type=text> 	
+			<button id=dev-button>go</button>
 		</div>
 
 	</body>

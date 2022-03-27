@@ -1,5 +1,6 @@
 let dialogue = {
 	dialogue: function(options){
+
 		/*
 		options: {
 			id			<string>
@@ -21,7 +22,7 @@ let dialogue = {
 
 		//adding text <p> content </p> if there's any
 		if (typeof options.content === 'string'){
-			$("<p>" + options.content + "</p>").appendTo(div);
+			$("<p class=dialogue-content>" + options.content + "</p>").appendTo(div);
 		}
 
 		// adding button object if there's any

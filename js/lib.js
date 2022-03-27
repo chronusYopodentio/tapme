@@ -4,7 +4,7 @@ let movement = {
 	exception: {
 		not_object: "User exception: argument not object"
 	},
-	disappear: function(object){
+	disappear: function(object, time=movement.ANIMATION_TIME){
 		//check if object is actually object
 		if (typeof object != 'object'){
 			throw movement.exception.not_object;
@@ -15,7 +15,7 @@ let movement = {
 				opacity: 0
 			},
 			{
-				duration: movement.ANIMATION_TIME,
+				duration: time,
 				complete: function(){
 					object.remove();
 				}
@@ -23,7 +23,7 @@ let movement = {
 		);
 	},
 
-	appear: function(object){
+	appear: function(object, time=movement.ANIMATION_TIME){
 		//check object argument
 		if (typeof object != 'object'){
 			throw movement.exception.not_object;
@@ -37,7 +37,52 @@ let movement = {
 		//animation
 		object.show().animate({
 			opacity: "1"
-		}, movement.ANIMATION_TIME);
+		}, time);
 
+	},
+	slideOut: function(object, id, width=500, height=100){
+		object.css({
+			width: 0,
+			height: 50 
+		});
+
+		let inside = $("div#" + id + " > p");
+		inside.css({
+			position: "absolute",
+			opacity: 0
+		});
+
+		object.show().animate(
+		{
+			width: String(width)+"px" 
+		},
+		{
+			duration: movement.ANIMATION_TIME,
+			complete: function(){
+				inside.animate({
+					opacity: 1
+				},50)
+			}
+		}
+		);
+
+	},
+	
+	slideIn: function(object,after, time=movement.ANIMATION_TIME){	
+		//after is function to execute after animation finished
+		if (typeof after != 'function'){
+			throw "slideIn's second arg must be func";
+		}
+		object.empty();
+		object.animate({
+			width: "0px"
+		}, {
+			duration: time,
+			complete: function(){
+				object.remove();
+				after()
+			}
+		});
 	}
+
 }

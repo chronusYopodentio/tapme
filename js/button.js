@@ -1,5 +1,5 @@
 let button = {
-	button: function(options){
+	button: function(options, onClick=null){
 		/*
 		options {
 			id			<string>
@@ -16,6 +16,9 @@ let button = {
 		}
 		if (typeof options.onClick === 'function'){
 			button.click(options.onClick);
+		}
+		if (typeof onClick === 'function'){
+			button.click(onClick);
 		}
 		
 		return button;

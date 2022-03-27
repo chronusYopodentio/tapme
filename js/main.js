@@ -1,5 +1,6 @@
 var main = {
 	init: function(){
+		dev.init();
 		zero.init();
 	}
 }

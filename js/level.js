@@ -25,8 +25,13 @@ let zero = {
 	},
 	block2: function(){
 		let button1 = new button.button({
-			content: "kay, fair enough"
+			content: "kay, fair enough",
+			onClick: function(){
+				movement.disappear(dialogue1);
+				zero.block4();
+			}
 		});
+		
 		let button2 = new button.button({
 			content: "fuck you I have homework",
 			onClick: function(){
@@ -34,6 +39,7 @@ let zero = {
 				zero.block3();
 			}
 		});
+
 		let dialogue1 = new dialogue.dialogue({
 			title: "Objective",
 			content:
@@ -48,13 +54,21 @@ let zero = {
 			`,
 			buttons: [button1, button2]
 		});
-		dialogue1.appendTo(zero.PARENT_DIV);
 
+		dialogue1.appendTo(zero.PARENT_DIV);
 		dialogue1.hide();
 		movement.appear(dialogue1);
 	},
 
 		block3: function(){
+			let button1 = new button.button({
+				content: "Fine.",
+				onClick: function(){
+					movement.disappear(dialogue1);
+					zero.block4();
+				}
+			});
+
 			let dialogue1 = new dialogue.dialogue({
 				title: "!?",
 				content:
@@ -65,5 +79,82 @@ let zero = {
 			dialogue1.appendTo(zero.PARENT_DIV);
 			dialogue1.hide();
 			movement.appear(dialogue1);
+		},
+
+		//introduction: the case of kurt
+		block4: function(){
+			let dialogue1 = new dialogue.dialogue({
+				id: "intro-dialogue",
+				content: "THE CASE OF KURT",
+			});
+
+			dialogue1.appendTo(zero.PARENT_DIV);
+			movement.slideOut(dialogue1, 'intro-dialogue', 270);
+			
+			dialogue1.hover(
+				//handler in
+				function(){
+					$(this).css({
+						color: "red",
+					});
+				},
+				//handler out
+				function(){
+					$(this).css({
+						color: "black",
+					});
+				}
+			);
+			dialogue1.click(
+				function(){
+					movement.slideIn(dialogue1, zero.block5);
+				}
+			)
+		},
+
+		/*
+		1. create button
+		2. create onClick, link to next block
+		3. create dialogue
+		4. append button to dialogue
+		5. hide dialogue
+		6. appear dialogue so that is has animation
+		*/
+
+		block5: function(){
+			
+			let button1 = new button.button(plot.block1.button1, 
+				function(){
+					movement.disappear(dialg);
+					zero.block6();
+				}
+			);
+			
+			//creating dialogue
+			let dialg = new dialogue.dialogue(plot.block1.dialg);
+			
+			button1.appendTo(dialg);
+			dialg.appendTo(zero.PARENT_DIV);
+			dialg.hide()
+			movement.appear(dialg);
+		},
+		block6: function(){
+			let button1 = new button.button(plot.block2.button1,
+				function(){
+					//add evidence
+				});
+
+			let dialg = new dialogue.dialogue(plot.block2.dialg);
+			button1.appendTo(dialg);
+			dialg.appendTo(zero.PARENT_DIV);
+			dialg.hide();
+			movement.appear(dialg);
 		}
+
+
+
+		
+
+
 }
+
