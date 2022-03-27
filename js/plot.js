@@ -4,7 +4,7 @@ let plot = {
 	block1 : {
 		dialg:{
 			id: "crime-scene",
-			divClass: "crime-scene",
+			divClass: "dialogue",
 			title: "crime scene",
 			content: `
 				Kurt, a young musician, was found dead on Friday April 8th. <br>
@@ -20,7 +20,7 @@ let plot = {
 
 	block2 : {
 		dialg : {
-			divClass: "crime-scene",
+			divClass: "dialogue",
 			title: "crime scene",
 			content: 
 			`
@@ -32,5 +32,109 @@ let plot = {
 		button1: {
 			content: "add to inventory"
 		}
+	},
+
+	block3: {
+		dialg: {
+			divClass: "dialogue",
+			title: "lab",
+			content: "After 20 hours, they finished with his autopsy."
+		},
+		button1: {
+			content: "Get autopsy report"
+		}
+	},
+
+	freud1: {
+		dia : {
+			divClass: "dialogue",
+			title: "Dr. Freud",
+			content: "Dr. Freud, but call me Sid. From the autopsy team."
+		},
+		button: {
+			content: "next"
+		}
+	},
+
+	freud2: {
+		dlg: {
+			divClass: "dialogue",
+			title: "Dr. Freud",
+			content: "At first I thought it was alcolhol too."
+		},
+		btn: {
+			content: "next"
+		}
+	},
+
+	freud3: {
+		dlg: {
+			divClass: "dialogue", 
+			title: "Dr. Freud",
+			content: "It seems like this would be a case for you."
+		},
+		btn: {
+			content: "next"
+		}
+	},
+
+	freud4: {
+		dlg: {
+			divClass: "dialogue",
+			title: "Dr. Freud",
+			content: "Anyway, it seems like there's a page of his diary in his pocket."
+		},
+		btn: {
+			content: "Can I have it?"
+		}
+	},
+
+	freud5: {
+		dlg: {
+			divClass: "dialogue",
+			title: "Dr. Freud",
+			content: "I guess it wouldn't harm, just don't tell anyone."
+		},
+		btn: {
+			content: "Receive"
+		}
+	},
+
+	freud6: {
+		dlg: {
+			divClass: "dialogue",
+			title: "thoughts",
+			content: "interesting..."
+		},
+		btn: {
+			content: "next"
+		}
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

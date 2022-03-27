@@ -12,7 +12,7 @@ let dialogue = {
 		*/
 		let div = $("<div>")
 			.attr("id", typeof options.id != "undefined" ? options.id : "default-dialogue")
-			.addClass(typeof options.class != "undefined" ? options.class : "dialogue");
+			.addClass(typeof options.divClass != "undefined" ? options.divClass : "dialogue");
 
 
 		//adding title if there's any

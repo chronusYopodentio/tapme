@@ -86,3 +86,43 @@ let movement = {
 	}
 
 }
+
+//shortcut for creating dialogue with next button
+function createDialogue(_op, divParent, after){
+	/*
+	_opdlg must the dialogue options object
+	_opbtn must the button options object
+	divParent is the div where dialogue is appended to
+	after is the next function to execute
+	*/
+	if (typeof _op != "object"){
+		throw "arg[0] must be options object this has dlg:{} and btn:{}";
+	}
+	if (typeof divParent != 'string'){
+		throw "arg[1] <divParent> must be string";
+	}
+	if (typeof after != 'function'){
+		throw "arg[2] <after> must be a function";
+	}
+	let btn = new button.button(_op.btn,
+		function(){
+			movement.disappear(dlg);
+			after()
+		});
+	let dlg = new dialogue.dialogue(_op.dlg);
+	btn.appendTo(dlg);
+	dlg.appendTo(divParent);
+	dlg.hide();
+	movement.appear(dlg);
+}
+
+
+
+
+
+
+
+
+
+
+

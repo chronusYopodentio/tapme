@@ -135,13 +135,18 @@ let zero = {
 			
 			button1.appendTo(dialg);
 			dialg.appendTo(zero.PARENT_DIV);
-			dialg.hide()
+			dialg.hide();
 			movement.appear(dialg);
 		},
+		
+		//crime report
 		block6: function(){
 			let button1 = new button.button(plot.block2.button1,
 				function(){
 					//add evidence
+					inventory.add(evidence.crimesceneReport);
+					movement.disappear(dialg);
+					zero.block7();
 				});
 
 			let dialg = new dialogue.dialogue(plot.block2.dialg);
@@ -149,12 +154,101 @@ let zero = {
 			dialg.appendTo(zero.PARENT_DIV);
 			dialg.hide();
 			movement.appear(dialg);
+		},
+		
+		//autopsy Report
+		block7: function(){
+			let button1 = new button.button(plot.block3.button1,
+				function(){
+					inventory.add(evidence.autopsyReport);
+					movement.disappear(dialg);
+					zero.block8();
+				});
+			let dialg = new dialogue.dialogue(plot.block3.dialg);
+			button1.appendTo(dialg);
+
+			dialg.appendTo(zero.PARENT_DIV);
+			dialg.hide();
+			movement.appear(dialg);
+		},
+
+
+		//freud
+		block8 : function(){
+			let btn = new button.button(plot.freud1.button,
+				function(){
+					movement.disappear(dlg);
+					zero.block9();
+				});
+			let dlg = new dialogue.dialogue(plot.freud1.dia);
+			btn.appendTo(dlg);
+			dlg.appendTo(zero.PARENT_DIV);
+			dlg.hide();
+			movement.appear(dlg);
+		},
+
+		//freud 2
+		block9: function(){
+			createDialogue(
+				plot.freud2,
+				zero.PARENT_DIV,
+				zero.block10
+				
+			);
+		},
+		//freud 3
+		block10: function(){
+			createDialogue(
+				plot.freud3,
+				zero.PARENT_DIV,
+				zero.block11
+			);
+		},
+
+		block11 : function(){
+			createDialogue(
+				plot.freud4,
+				zero.PARENT_DIV,
+				zero.block12
+			);
+		},
+
+		block12 :  function(){
+			createDialogue(
+				plot.freud5,
+				zero.PARENT_DIV,
+				function(){
+					inventory.add(evidence.diary1);
+					zero.block13();
+				}
+			);
+		},
+		
+		block13: function(){
+			createDialogue(
+				plot.freud6,
+				zero.PARENT_DIV,
+				function(){
+					
+				}
+			)
 		}
 
-
-
-		
-
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
