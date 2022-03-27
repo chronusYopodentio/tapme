@@ -1,6 +1,6 @@
 var main = {
 	init: function(){
-		playground.init();
+		zero.init();
 	}
 }
 
